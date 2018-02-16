@@ -25,3 +25,12 @@ body {
     overflow-y: auto;
     padding: 20px;
 }
+
+.boxed1 {
+width: 300px;
+height: 160px;
+background-color: Gainsboro;
+
+}
+
+.text1 {margin-left: 10px;}

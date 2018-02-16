@@ -33,16 +33,39 @@
 ===================== */
 
 // Use the data source URL from lab 1 in this 'ajax' function:
-var downloadData = $.ajax("http://");
+
+var downloadData = $.ajax("https://raw.githubusercontent.com/CPLN-692-401/datasets/master/json/philadelphia-solar-installations.json");
+
 
 // Write a function to prepare your data (clean it up, organize it as you like, create fields, etc)
-var parseData = function() {};
+
+var parseData = function(downloadData){return JSON.parse(downloadData);};
+
+// var parseData = function() {};
 
 // Write a function to use your parsed data to create a bunch of marker objects (don't plot them!)
-var makeMarkers = function() {};
+
+// var makeMarkers = function() {};
+
+//var makeMarkers = function(parseData) {console.log (parseData);};
+
+//var makeMarkers = function(parseData) {console.log (parseData);};
+
+//var makeMarkers = _.map([1, 2, 3], function(num){ return num * 3; });
+
+// DOES NOT WORK var makeMarkers = _.map([parseData, function(num){L.marker([num.CapitalLatitude,num.CapitalLongitude]).addTo(map); }]);
+
+var makeMarkers = function (array){
+  return _.map(array, function(item){
+    return L.marker([item.LAT,item.LONG_]);}); };
+
+// L.marker([50.5, 30.5]).addTo(map);
 
 // Now we need a function that takes this collection of markers and puts them on the map
-var plotMarkers = function() {};
+var plotMarkers = function(array){
+  return _.map(array, function(item){item.addTo(map);
+  });
+};
 
 // At this point you should see a bunch of markers on your map.
 // Don't continue on until you can make them appear!
@@ -61,7 +84,10 @@ var plotMarkers = function() {};
 ===================== */
 
 // Look to the bottom of this file and try to reason about what this function should look like
-var removeMarkers = function() {};
+var removeMarkers = function(array) {
+  return _.map(array, function(item){map.removeLayer(item);});};
+
+
 
 /* =====================
   Optional, stretch goal
